@@ -5,7 +5,7 @@ import java.util.List;
 import thorsten.yahya.werwolf.activities.ShowPictureActivity;
 import thorsten.yahya.werwolf.listener.PlayerCircleImageView;
 import thorsten.yahya.werwolf.listener.PlayerModel;
-import thorsten.yahya.werwolf.roles.Roles;
+import thorsten.yahya.werwolf.roles.Role;
 import thorsten.yahya.werwolf.roles.Werwolf;
 import thorsten.yahya.werwolf.roles.roleActions.VoteKillAction;
 
@@ -23,14 +23,14 @@ public class StateController {
     private static final int CHOOSE_ROLE_NIGHT_LATER = 6;
     private int state;
     private int pos;
-    private Roles currentRole;
-    private Roles nextRole;
+    private Role currentRole;
+    private Role nextRole;
     private ShowPictureActivity showPictureActivity;
 
     private PlayerModel playerModel;
-    private List<Roles> roles;
+    private List<Role> roles;
 
-    public StateController(List<Roles> roles, PlayerModel playerModel, ShowPictureActivity showPictureActivity) {
+    public StateController(List<Role> roles, PlayerModel playerModel, ShowPictureActivity showPictureActivity) {
         this.roles = roles;
         this.playerModel = playerModel;
         this.showPictureActivity = showPictureActivity;
@@ -108,7 +108,7 @@ public class StateController {
 
 
     private void endRoleNight() {
-        for (Roles role : roles) {
+        for (Role role : roles) {
             role.endOfNight();
         }
     }
@@ -129,9 +129,9 @@ public class StateController {
         return false;
     }
 
-    private int countAliveWerwolf(List<Roles> roles) {
+    private int countAliveWerwolf(List<Role> roles) {
         int aliveWerwolfes = 0;
-        for (Roles role : roles) {
+        for (Role role : roles) {
             if (role.isAlive() && role instanceof Werwolf) {
                 aliveWerwolfes++;
             }
@@ -139,9 +139,9 @@ public class StateController {
         return aliveWerwolfes;
     }
 
-    private int countAliveRoles(List<Roles> roles) {
+    private int countAliveRoles(List<Role> roles) {
         int alivePlayer = 0;
-        for (Roles role : roles) {
+        for (Role role : roles) {
             if (role.isAlive()) {
                 alivePlayer++;
             }
@@ -151,9 +151,9 @@ public class StateController {
 
     private void connectPlayerAndCircle() {
         List<PlayerCircleImageView> selected = playerModel.getSelected();
-        Roles role = null;
+        Role role = null;
         for (int i = 0; i < selected.size(); i++) {
-            Roles oldRole = role;
+            Role oldRole = role;
             role = this.roles.get(pos + i);
             selected.get(i).setRole(role);
             role.set();
@@ -163,7 +163,7 @@ public class StateController {
     }
 
     private void killAfterNight() {
-        for (Roles role : roles) {
+        for (Role role : roles) {
             if (role.diesAfterNight()) {
                 role.kill();
             }
@@ -171,7 +171,7 @@ public class StateController {
     }
 
     private void killAfterDay() {
-        for (Roles role : roles) {
+        for (Role role : roles) {
             if (role.diesAfterDay()) {
                 role.kill();
             }
@@ -179,14 +179,14 @@ public class StateController {
     }
 
     private void killVotes() {
-        for (Roles selected : playerModel.getSelectedRoles()) {
+        for (Role selected : playerModel.getSelectedRoles()) {
             selected.addAction(new VoteKillAction());
         }
     }
 
     private boolean hasNextRole() {
         while (pos < roles.size()) {
-            Roles role = this.roles.get(pos);
+            Role role = this.roles.get(pos);
             if (role.hasNightAction()) {
                 nextRole = role;
                 return true;

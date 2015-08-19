@@ -6,11 +6,14 @@ import thorsten.yahya.werwolf.roles.roleActions.WerwolfKillAction;
 
 /**
  * Created by HipTeen on 12.07.2015.
+ *
+ * The bad guys that give the game its name. Every night they wake up and kill someone. And eat him.
+ * Delicious!
  */
-public class Werwolf extends RolesAbstract {
+public class Werwolf extends RoleAbstract {
 
     private int peopleToKill = 1;
-    private Roles parentWerwolf;
+    private Role parentWerwolf;
 
     @Override
     public boolean hasNightAction() {
@@ -23,8 +26,8 @@ public class Werwolf extends RolesAbstract {
     }
 
     @Override
-    public void givePlayerRoleActions(List<Roles> player) {
-        for (Roles role : player) {
+    public void givePlayerRoleActions(List<Role> player) {
+        for (Role role : player) {
             role.addAction(new WerwolfKillAction());
         }
         peopleToKill = 0;
@@ -36,7 +39,7 @@ public class Werwolf extends RolesAbstract {
     }
 
     @Override
-    public void setParent(Roles parent) {
+    public void setParent(Role parent) {
         this.parentWerwolf = parent;
     }
 

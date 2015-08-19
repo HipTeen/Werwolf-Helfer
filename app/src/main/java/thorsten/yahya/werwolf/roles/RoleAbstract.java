@@ -13,8 +13,12 @@ import thorsten.yahya.werwolf.roles.roleActions.WitchKillAction;
 
 /**
  * Created by HipTeen on 14.07.2015.
+ *
+ * Convenience class that gives default behaviour.
+ * You should extend this class if you add a new role and overwrite selected methods to
+ * change the behaviour
  */
-public abstract class RolesAbstract implements Roles {
+public abstract class RoleAbstract implements Role {
 
     protected boolean isAlive = true;
 
@@ -99,7 +103,7 @@ public abstract class RolesAbstract implements Roles {
     }
 
     @Override
-    public void givePlayerRoleActions(List<Roles> player) {}
+    public void givePlayerRoleActions(List<Role> player) {}
 
     @Override
     public String nightActionText() {
@@ -107,7 +111,7 @@ public abstract class RolesAbstract implements Roles {
     }
 
     @Override
-    public void setParent(Roles parent) {}
+    public void setParent(Role parent) {}
 
     @Override
     public boolean hasParent() {
@@ -128,9 +132,9 @@ public abstract class RolesAbstract implements Roles {
         isAlive = false;
     }
 
-    public void copyFromUndeterminedPlayer(UndeterminedPlayer undeterminedPlayer) {
-        this.actions = undeterminedPlayer.actions;
-
+    @Override
+    public void copyFromOtherRolePlayer(Role undeterminedPlayer) {
+        this.actions = undeterminedPlayer.getActions();
     }
 
     @Override
@@ -152,5 +156,19 @@ public abstract class RolesAbstract implements Roles {
             }
         }
         actions = newActions;
+    }
+
+    @Override
+    public List<RoleAction> getActions() {
+        return actions;
+    }
+
+    @Override
+    public boolean hasWerewolfAction() {
+        boolean hasWerewolfKillAction = false;
+        for (RoleAction action : actions) {
+            hasWerewolfKillAction |= action instanceof WerwolfKillAction;
+        }
+        return hasWerewolfKillAction;
     }
 }

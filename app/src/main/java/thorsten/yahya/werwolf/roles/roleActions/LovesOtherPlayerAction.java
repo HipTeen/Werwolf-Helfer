@@ -1,15 +1,15 @@
 package thorsten.yahya.werwolf.roles.roleActions;
 
-import thorsten.yahya.werwolf.roles.Roles;
+import thorsten.yahya.werwolf.roles.Role;
 
 /**
  * Created by HipTeen on 15.07.2015.
  */
 public class LovesOtherPlayerAction extends RoleActionAbstract {
 
-    private Roles myLover;
+    private Role myLover;
 
-    public LovesOtherPlayerAction(Roles myLover) {
+    public LovesOtherPlayerAction(Role myLover) {
         this.myLover = myLover;
     }
 

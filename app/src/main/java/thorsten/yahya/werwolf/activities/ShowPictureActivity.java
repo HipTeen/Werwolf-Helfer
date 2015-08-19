@@ -23,8 +23,8 @@ import thorsten.yahya.werwolf.controller.StateController;
 import thorsten.yahya.werwolf.listViewUtil.Model;
 import thorsten.yahya.werwolf.listener.PlayerCreateListener;
 import thorsten.yahya.werwolf.listener.PlayerModel;
-import thorsten.yahya.werwolf.roles.Roles;
-import thorsten.yahya.werwolf.roles.RolesFactory;
+import thorsten.yahya.werwolf.roles.Role;
+import thorsten.yahya.werwolf.roles.RoleFactory;
 import thorsten.yahya.werwolf.util.SystemUiHider;
 
 
@@ -64,7 +64,7 @@ public class ShowPictureActivity extends Activity {
     private SystemUiHider mSystemUiHider;
     private List<Model> models;
     private int maxPlayer;
-    private List<Roles> roles;
+    private List<Role> roles;
     private PlayerModel playerModel = new PlayerModel();
     private StateController stateController;
 
@@ -147,8 +147,8 @@ public class ShowPictureActivity extends Activity {
         });
     }
 
-    private List<Roles> getRolesFromModels(List<Model> models) {
-        List<Roles> roles = new ArrayList<>();
+    private List<Role> getRolesFromModels(List<Model> models) {
+        List<Role> roles = new ArrayList<>();
         for (Model model : models) {
             roles.addAll(getRolesFromModel(model));
         }
@@ -163,10 +163,10 @@ public class ShowPictureActivity extends Activity {
         return count;
     }
 
-    private List<Roles> getRolesFromModel(Model model) {
-        List<Roles> roles = new ArrayList<>();
+    private List<Role> getRolesFromModel(Model model) {
+        List<Role> roles = new ArrayList<>();
         for (int i = 0; i < model.getCount(); i++) {
-            Roles previous = RolesFactory.createRole(model.getTitle());
+            Role previous = RoleFactory.createRole(model.getTitle());
             roles.add(previous);
         }
         return roles;
@@ -228,7 +228,7 @@ public class ShowPictureActivity extends Activity {
         }
     }
 
-    public void notifyAbout(Roles currentRole) {
+    public void notifyAbout(Role currentRole) {
         String text = currentRole.nightActionText();
         setInfoText(text);
     }

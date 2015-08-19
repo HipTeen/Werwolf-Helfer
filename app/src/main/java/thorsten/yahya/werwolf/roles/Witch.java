@@ -7,8 +7,11 @@ import thorsten.yahya.werwolf.roles.roleActions.WitchKillAction;
 
 /**
  * Created by HipTeen on 12.07.2015.
+ *
+ * This is one powerful role. The witch has two potions, one for killing, one for healing,
+ * that she can each use independently once throughout the whole game.
  */
-public class Witch extends RolesAbstract {
+public class Witch extends RoleAbstract {
 
     private boolean hasHealPotionPhasePassed = false;
     private boolean hasKillPotionPhasePassed = false;
@@ -33,7 +36,7 @@ public class Witch extends RolesAbstract {
     }
 
     @Override
-    public void givePlayerRoleActions(List<Roles> player) {
+    public void givePlayerRoleActions(List<Role> player) {
         if (!hasHealPotionPhasePassed) {
             if (!player.isEmpty()) {
                 player.get(0).addAction(new WitchHealAction());

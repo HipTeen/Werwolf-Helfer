@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
 
-import thorsten.yahya.werwolf.roles.Roles;
+import thorsten.yahya.werwolf.roles.Role;
 
 /**
  * Created by HipTeen on 28.07.2015.
@@ -24,7 +24,7 @@ public class PlayerCircleImageView extends ImageView {
 
     private boolean selectedByPlayer = false;
     private PlayerCreateListener parent;
-    private Roles role;
+    private Role role;
 
     public PlayerCircleImageView(final Context context, final PlayerCreateListener parent) {
         super(context);
@@ -90,11 +90,11 @@ public class PlayerCircleImageView extends ImageView {
         updateColor();
     }
 
-    public Roles getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(Roles role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

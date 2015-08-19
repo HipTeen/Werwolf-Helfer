@@ -9,8 +9,11 @@ import thorsten.yahya.werwolf.roles.roleActions.WitchKillAction;
 
 /**
  * Created by HipTeen on 15.07.2015.
+ *
+ * This role is a village people at first. But if the werewolves kill him, he doesn't die,
+ * but turns into a werewolve himself.
  */
-public class Cursed extends RolesAbstract {
+public class Cursed extends RoleAbstract {
 
     private boolean isWerwolf = false;
     private boolean wokeUp = false;

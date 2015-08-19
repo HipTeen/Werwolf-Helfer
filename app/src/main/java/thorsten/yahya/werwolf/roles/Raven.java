@@ -6,8 +6,11 @@ import thorsten.yahya.werwolf.roles.roleActions.RavenShitAction;
 
 /**
  * Created by HipTeen on 15.07.2015.
+ *
+ * The raven can choose someone in the night who will have two votes against him at the next vote
+ * at daytime
  */
-public class Raven extends RolesAbstract {
+public class Raven extends RoleAbstract {
 
     private boolean didShit;
 
@@ -22,7 +25,7 @@ public class Raven extends RolesAbstract {
     }
 
     @Override
-    public void givePlayerRoleActions(List<Roles> player) {
+    public void givePlayerRoleActions(List<Role> player) {
         player.get(0).addAction(new RavenShitAction());
         didShit = true;
     }

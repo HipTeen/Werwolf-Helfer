@@ -2,9 +2,11 @@ package thorsten.yahya.werwolf.roles;
 
 /**
  * Created by HipTeen on 29.07.2015.
+ *
+ * Factory class for roles
  */
-public class RolesFactory {
-    public static Roles createRole(String title) {
+public class RoleFactory {
+    public static Role createRole(String title) {
         switch (title) {
             case "Amor":
                 return new Cupid();

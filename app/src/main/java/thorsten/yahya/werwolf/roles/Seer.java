@@ -4,8 +4,11 @@ import java.util.List;
 
 /**
  * Created by HipTeen on 12.07.2015.
+ *
+ * The seer wakes up in the night and can choose one person. He then will get to know if this one
+ * is a werewolve or not (or if he is bad or not, if you have other evil roles like vampires).
  */
-public class Seer extends RolesAbstract{
+public class Seer extends RoleAbstract {
 
     private boolean hasSeen;
 
@@ -20,7 +23,7 @@ public class Seer extends RolesAbstract{
     }
 
     @Override
-    public void givePlayerRoleActions(List<Roles> player) {
+    public void givePlayerRoleActions(List<Role> player) {
         hasSeen = true;
     }
 

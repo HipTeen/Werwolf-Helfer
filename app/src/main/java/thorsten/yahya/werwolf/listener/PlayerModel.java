@@ -3,7 +3,7 @@ package thorsten.yahya.werwolf.listener;
 import java.util.ArrayList;
 import java.util.List;
 
-import thorsten.yahya.werwolf.roles.Roles;
+import thorsten.yahya.werwolf.roles.Role;
 import thorsten.yahya.werwolf.roles.UndeterminedPlayer;
 
 /**
@@ -32,8 +32,8 @@ public class PlayerModel {
     }
 
     //TODO benutze getSelected
-    public List<Roles> getSelectedRoles() {
-        List<Roles> selectedRoles = new ArrayList<>();
+    public List<Role> getSelectedRoles() {
+        List<Role> selectedRoles = new ArrayList<>();
         for (PlayerCircleImageView playerCircle : playerCircles) {
             if (playerCircle.isSelectedByPlayer()) {
                 selectedRoles.add(playerCircle.getRole());
