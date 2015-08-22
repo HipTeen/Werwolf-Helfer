@@ -58,4 +58,9 @@ public class Werwolf extends RoleAbstract {
         super.endOfNight();
         peopleToKill++;
     }
+
+    @Override
+    public String toString() {
+        return "Werwolf";
+    }
 }

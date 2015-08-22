@@ -71,4 +71,9 @@ public class Bitch extends RoleAbstract {
         locked = false;
         return lastLover != null && lastLover.hasWerewolfAction();
     }
+
+    @Override
+    public String toString() {
+        return "Dorfschlampe";
+    }
 }

@@ -67,4 +67,9 @@ public class Witch extends RoleAbstract {
         hasHealPotionPhasePassed = false;
         hasKillPotionPhasePassed = false;
     }
+
+    @Override
+    public String toString() {
+        return "Hexe";
+    }
 }

@@ -7,4 +7,9 @@ package thorsten.yahya.werwolf.roles;
  * (e.g. he uses his last bullet).
  */
 public class Hunter extends RoleAbstract {
+
+    @Override
+    public String toString() {
+        return "Jäger";
+    }
 }

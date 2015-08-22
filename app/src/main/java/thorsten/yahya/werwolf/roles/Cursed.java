@@ -80,4 +80,9 @@ public class Cursed extends RoleAbstract {
         super.endOfNight();
         wokeUp = false;
     }
+
+    @Override
+    public String toString() {
+        return "Verfluchter";
+    }
 }

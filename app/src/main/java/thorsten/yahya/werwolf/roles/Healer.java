@@ -44,4 +44,9 @@ public class Healer extends RoleAbstract {
         super.endOfNight();
         hasHealed = false;
     }
+
+    @Override
+    public String toString() {
+        return "Heiler";
+    }
 }

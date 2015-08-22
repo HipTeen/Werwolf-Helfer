@@ -17,8 +17,100 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/number_picker"
+        android:minWidth="200dp"
         android:textSize="18sp" />
 
+    <info.hoang8f.android.segmented.SegmentedGroup
+        android:id="@+id/segmented2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:layout_toLeftOf="@+id/number_picker">
+        <!--segmentedgroup:border_width="2dp"-->
+        <!--segmentedgroup:corner_radius="10dp"-->
+        <!-->-->
+
+        <RadioButton
+            android:id="@+id/number_role0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/number_role1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/number_role2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/number_role3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/number_role4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/number_role5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/number_role6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/number_role7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/number_role8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/number_role9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/number_role_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mehr"
+            style="@style/RadioButton" />
+
+
+
+    </info.hoang8f.android.segmented.SegmentedGroup>
 
     <EditText
         android:id="@+id/number_picker"
@@ -29,7 +121,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:text="0" />
+        android:text="0"
+        android:enabled="true"
+        android:ems="2"/>
 
 
 </RelativeLayout>

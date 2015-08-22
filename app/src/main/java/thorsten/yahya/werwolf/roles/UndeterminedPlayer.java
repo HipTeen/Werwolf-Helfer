@@ -6,4 +6,9 @@ package thorsten.yahya.werwolf.roles;
  * Role container, for players who don't have a role assigned yet.
  */
 public class UndeterminedPlayer extends RoleAbstract {
+
+    @Override
+    public String toString() {
+        return "Noch nicht zugeordnet";
+    }
 }

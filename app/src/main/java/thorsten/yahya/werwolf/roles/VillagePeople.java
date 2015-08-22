@@ -7,4 +7,8 @@ package thorsten.yahya.werwolf.roles;
  */
 public class VillagePeople extends RoleAbstract {
 
+    @Override
+    public String toString() {
+        return "Dorfbewohner";
+    }
 }

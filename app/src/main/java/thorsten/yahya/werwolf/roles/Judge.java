@@ -22,4 +22,9 @@ public class Judge extends RoleAbstract {
         super.givePlayerRoleActions(player);
         wokeUp = true;
     }
+
+    @Override
+    public String toString() {
+        return "Richter";
+    }
 }

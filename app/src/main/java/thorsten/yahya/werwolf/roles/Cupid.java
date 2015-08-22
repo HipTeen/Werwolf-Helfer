@@ -40,4 +40,9 @@ public class Cupid extends RoleAbstract {
                 + "Stirbt einer, stirbt auch der andere. Durch ihre Liebe bedingt, beschuldigen sie sich nicht gegenseitig"
                 + " und versuchen unter allen Umständen gemeinsam zu überleben, selbst wenn einer von Ihnen Werwolf ist.";
     }
+
+    @Override
+    public String toString() {
+        return "Armor";
+    }
 }

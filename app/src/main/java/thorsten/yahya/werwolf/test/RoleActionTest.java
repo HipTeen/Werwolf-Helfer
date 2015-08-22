@@ -7,6 +7,7 @@ import java.util.List;
 
 import thorsten.yahya.werwolf.roles.Bitch;
 import thorsten.yahya.werwolf.roles.Cupid;
+import thorsten.yahya.werwolf.roles.Cursed;
 import thorsten.yahya.werwolf.roles.Healer;
 import thorsten.yahya.werwolf.roles.Hunter;
 import thorsten.yahya.werwolf.roles.Judge;
@@ -32,7 +33,7 @@ public class RoleActionTest extends InstrumentationTestCase {
     public void testDiesAfterNight() {
         testDiesAfterNightForBitch();
         testDiesAfterNightForStandardRole(new Cupid());
-        //testDiesAfterNightForCursed();
+        testDiesAfterNightForCursed();
         testDiesAfterNightForStandardRole(new Healer());
         testDiesAfterNightForStandardRole(new Hunter());
         testDiesAfterNightForStandardRole(new Judge());
@@ -43,6 +44,46 @@ public class RoleActionTest extends InstrumentationTestCase {
         testDiesAfterNightForStandardRole(new VillagePeople());
         testDiesAfterNightForStandardRole(new Werwolf());
         testDiesAfterNightForStandardRole(new Witch());
+    }
+
+    private void testDiesAfterNightForCursed() {
+        Cursed cursed = new Cursed();
+
+        //No death without action
+        assertFalse(cursed.diesAfterNight());
+        assertFalse(cursed.isWerwolf());
+
+        //Won't die if killed by Werewolves, instead becomes werewolve!
+        cursed.addAction(new WerwolfKillAction());
+        assertFalse(cursed.diesAfterNight());
+        assertTrue(cursed.isWerwolf());
+
+        cursed = new Cursed();
+        //Witch heal potion prevents it
+        cursed.addAction(new WitchHealAction());
+        assertFalse(cursed.diesAfterNight());
+        assertFalse(cursed.isWerwolf());
+
+        //Same for Healer
+        cursed.clearActions();
+        cursed.addAction(new WerwolfKillAction());
+        cursed.addAction(new HealerHealAction());
+        assertFalse(cursed.diesAfterNight());
+        assertFalse(cursed.isWerwolf());
+
+        //Witch Kills him
+        cursed.clearActions();
+        cursed.addAction(new WerwolfKillAction());
+        cursed.addAction(new WitchKillAction());
+        assertTrue(cursed.diesAfterNight());
+
+        //Dies by lovers dead
+        VillagePeople villagePeople = new VillagePeople();
+        cursed.clearActions();
+        cursed.addAction(new LovesOtherPlayerAction(villagePeople));
+        villagePeople.addAction(new LovesOtherPlayerAction(cursed));
+        villagePeople.addAction(new WerwolfKillAction());
+        assertTrue(cursed.diesAfterNight());
     }
 
     private void testDiesAfterNightForBitch() {
@@ -63,7 +104,7 @@ public class RoleActionTest extends InstrumentationTestCase {
         tempList.add(villagePeople);
         bitch.givePlayerRoleActions(tempList);
         assertTrue(bitch.diesAfterNight());
-        //Healing here one night stand won't help her
+        //Healing her one night stand won't help her
         villagePeople.addAction(new WitchHealAction());
         assertTrue(bitch.diesAfterNight());
 
@@ -119,6 +160,14 @@ public class RoleActionTest extends InstrumentationTestCase {
 
         //Kill Action of witcher kills also alone
         role.addAction(new WitchKillAction());
+        assertTrue(role.diesAfterNight());
+
+        //Dies if lovers dies
+        VillagePeople villagePeople = new VillagePeople();
+        role.clearActions();
+        villagePeople.addAction(new LovesOtherPlayerAction(role));
+        role.addAction(new LovesOtherPlayerAction(villagePeople));
+        villagePeople.addAction(new WerwolfKillAction());
         assertTrue(role.diesAfterNight());
     }
 }

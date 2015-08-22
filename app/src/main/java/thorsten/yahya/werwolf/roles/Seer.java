@@ -38,4 +38,9 @@ public class Seer extends RoleAbstract {
         super.endOfNight();
         hasSeen = false;
     }
+
+    @Override
+    public String toString() {
+        return "Seherin";
+    }
 }

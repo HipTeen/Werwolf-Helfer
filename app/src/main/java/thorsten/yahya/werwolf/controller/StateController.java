@@ -100,6 +100,7 @@ public class StateController {
                 }
                 showPictureActivity.setInfoText("Das Dorf schläft ein");
                 state = NIGHT_FIRST;
+                pos = 0;
                 break;
         }
         playerModel.updatePlayerColor();

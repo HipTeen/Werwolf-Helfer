@@ -43,4 +43,8 @@ public class Raven extends RoleAbstract {
     }
 
 
+    @Override
+    public String toString() {
+        return "Rabe";
+    }
 }
